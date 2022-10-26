@@ -5,27 +5,29 @@ class NavigationMenu extends StatelessWidget {
   const NavigationMenu();
 
   Widget menu(String menu, Function onTap) {
-    return InkWell(
-        mouseCursor: MaterialStateMouseCursor.clickable,
-        hoverColor: Colors.transparent,
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        onTap: () {},
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            menu,
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ));
+    return Container(
+        child: InkWell(
+            mouseCursor: MaterialStateMouseCursor.clickable,
+            hoverColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () {},
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                menu,
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            )));
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.all(20),
       height: 100,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
