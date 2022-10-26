@@ -17,12 +17,12 @@ class RootPage extends StatelessWidget {
                 'Contrary to popular belief, Lorem Ipsum is not simply random text.',
                 style: TextStyle(
                     fontFamily: 'aggro',
-                    fontSize: 25,
+                    fontSize: 40,
                     fontWeight: FontWeight.bold)),
             SizedBox(height: 15),
             Text(
                 'Contrary to popular belief, Lorem Ipsum is not simply random text. Contrary to popular belief, Lorem Ipsum is not simply random text. Contrary to popular belief, Lorem Ipsum is not simply random text. Contrary to popular belief, Lorem Ipsum is not simply random text.',
-                style: TextStyle(fontFamily: 'aggro', fontSize: 16)),
+                style: TextStyle(fontFamily: 'aggro', fontSize: 28)),
           ],
         ));
   }
@@ -45,17 +45,11 @@ class RootPage extends StatelessWidget {
                   children: [
                     Text(
                       "디자인 어케 하는게 좋을까 머리가 아파용",
-                      style: TextStyle(
-                          fontFamily: "aggro",
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22),
+                      style: TextStyle(fontFamily: "aggro", fontSize: 32),
                     ),
                     Text(
                       "텍스트들 나중에 다 텍스트에어리어 입력할 수 있게 바꾸기",
-                      style: TextStyle(
-                          fontFamily: "aggro",
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22),
+                      style: TextStyle(fontFamily: "aggro", fontSize: 32),
                     )
                   ],
                 )),

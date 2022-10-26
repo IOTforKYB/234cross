@@ -19,7 +19,7 @@ class footer extends StatelessWidget {
             color: Colors.grey.shade300),
         child: Text(
           "Copyright 2022 김용범 All Rights Reserved.",
-          style: TextStyle(fontSize: 13),
+          style: TextStyle(fontFamily: "aggro", fontSize: 13),
           textAlign: TextAlign.center,
         ));
   }
