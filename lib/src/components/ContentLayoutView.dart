@@ -7,29 +7,10 @@ class ContentLayoutView extends StatelessWidget {
 
   const ContentLayoutView({this.contentWidget, this.leftMenu});
 
-  Widget menu(String menu, Function onTap) {
-    return InkWell(
-        mouseCursor: MaterialStateMouseCursor.clickable,
-        hoverColor: Colors.transparent,
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        onTap: () {},
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            menu,
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
-//      padding: const EdgeInsets.all(7),
+      //padding: const EdgeInsets.all(7),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

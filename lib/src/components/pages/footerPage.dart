@@ -15,7 +15,7 @@ class footer extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         width: double.infinity,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(10),
             color: Colors.grey.shade300),
         child: Text(
           "Copyright 2022 김용범 All Rights Reserved.",

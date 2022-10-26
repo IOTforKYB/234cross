@@ -27,7 +27,11 @@ class NavigationMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.all(20),
       padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(width: 5, color: Colors.black)),
       height: 100,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
