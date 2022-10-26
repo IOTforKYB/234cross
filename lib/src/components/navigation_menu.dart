@@ -17,6 +17,7 @@ class NavigationMenu extends StatelessWidget {
               child: Text(
                 menu,
                 style: TextStyle(
+                  fontFamily: "aggro",
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
                 ),
@@ -40,7 +41,7 @@ class NavigationMenu extends StatelessWidget {
             children: [
               menu("환자 조회", () {}),
               menu("병상 조회", () {}),
-              menu("공지 사항", () {}),
+              menu("공지사항", () {}),
             ],
           )
         ],

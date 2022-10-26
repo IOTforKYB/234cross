@@ -14,7 +14,7 @@ class whereyouSick extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'whereyouSick',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      //theme: ThemeData(primarySwatch: Colors.blue),
       home: mainPage(),
     );
   }
