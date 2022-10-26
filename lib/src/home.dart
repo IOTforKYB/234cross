@@ -13,9 +13,9 @@ class mainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
+      alignment: Alignment.topCenter,
       child: Column(
-        children: [NavigationMenu(), Expanded(child: RootPage()), footer()],
-      ),
+          children: [NavigationMenu(), Expanded(child: RootPage()), footer()]),
     ));
   }
 }
