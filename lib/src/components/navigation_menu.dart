@@ -18,7 +18,7 @@ class NavigationMenu extends StatelessWidget {
                 menu,
                 style: TextStyle(
                   fontFamily: "aggro",
-                  fontSize: 25,
+                  fontSize: 32,
                   fontWeight: FontWeight.bold,
                 ),
               ),
