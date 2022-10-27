@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NavigationMenu extends StatelessWidget {
-  const NavigationMenu();
+  NavigationMenu();
+  final ScrollController scrollController = ScrollController();
 
   Widget menu(String menu, Function onTap) {
     return Container(
@@ -27,7 +28,8 @@ class NavigationMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return SizedBox(
+      width: double.infinity,
       child: Container(
         margin: const EdgeInsets.all(20),
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
