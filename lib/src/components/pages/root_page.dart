@@ -1,13 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:whereyousick_admin/src/components/navigation_menu.dart';
+import 'package:whereyousick_admin/src/controller/ScreenLayoutController.dart';
 
 String makeRequire() {
   DateTime now = DateTime.now();
-  String name = "김용범";
+  int requireId = 1;
+  String name = "김용범"; // 변수로 바꿔서 입력값들 넣기
   String bed = "B1";
   String requiredItem = "진통제";
-  String requiredTime = DateFormat('MM/dd - HH:mm').format(now);
+  String requiredTime = DateFormat('MM/dd(E)-HH:mm').format(now);
   String makeRequirement(String patientName, String patientLoc,
       String patientReq, String reqTime) {
     return "환자 이름 : " +
@@ -29,9 +33,20 @@ List makeList() {
   return itemList;
 }
 
+void deleteList(List itemList) {
+  itemList.remove(itemList);
+}
+
 class RootPage extends StatelessWidget {
-  RootPage();
+  final ScreenSizeType screenSizeType;
+  static RootPage get to => Get.find();
+  RootPage(this.screenSizeType);
   final ScrollController scrollController = ScrollController();
+
+  void getMenu(String menuName) {
+    //ClickedMenu = menuName;
+    //return clickedMenu;
+  }
 
   Widget _contents() {
     return Container(
@@ -42,7 +57,7 @@ class RootPage extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              '간호사가 고른 메뉴(나중에 변수로 바꿔서 넣기)',
+              'clickedMenu',
               style: TextStyle(
                   fontFamily: 'aggro',
                   fontSize: 40,
@@ -66,20 +81,44 @@ class RootPage extends StatelessWidget {
       itemCount: makeList().length,
       itemBuilder: (context, index) {
         return Container(
-            child: Column(children: [
-          Text(makeList()[index],
-              style: TextStyle(fontFamily: "aggro", fontSize: 28),
-              textAlign: TextAlign.center),
-          Divider(
-            color: Colors.black,
-          )
-        ]));
+          child: Column(
+            children: [
+              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+                Row(
+                  children: [
+                    Container(
+                      child: Text(makeList()[index],
+                          overflow: TextOverflow.clip,
+                          style: TextStyle(fontFamily: "aggro", fontSize: 28),
+                          textAlign: TextAlign.center),
+                    ),
+                  ],
+                ),
+                IconButton(
+                    onPressed: () {
+                      //DB에 있는 클릭된 개체 삭제
+                    },
+                    icon: Icon(
+                      Icons.check_circle_outlined,
+                      size: 35,
+                      color: Colors.blue,
+                    )),
+              ]),
+              Divider(
+                color: Colors.black,
+              )
+            ],
+          ),
+        );
       },
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
+  Widget _miniLayout() {
+    return Container();
+  }
+
+  Widget _fullLayout() {
     return Container(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: Row(
@@ -105,13 +144,28 @@ class RootPage extends StatelessWidget {
                         color: Colors.black,
                       ),
                       //여기에 함수 추가해서 환자가 요청할 때마다 요청사항 추가하게
-                      Expanded(child: requirement())
+                      Expanded(child: requirement()),
+                      Divider(
+                        color: Colors.black,
+                      )
                     ],
                   )),
             ),
             SizedBox(width: 20),
-            Flexible(fit: FlexFit.tight, child: _contents())
+            Flexible(fit: FlexFit.tight, child: _contents()),
           ],
         ));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    switch (screenSizeType) {
+      case ScreenSizeType.Mini:
+        return _miniLayout();
+        break;
+      case ScreenSizeType.Full:
+        return _fullLayout();
+        break;
+    }
   }
 }

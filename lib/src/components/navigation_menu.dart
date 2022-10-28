@@ -1,18 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:whereyousick_admin/src/components/pages/root_page.dart';
+import 'package:whereyousick_admin/src/controller/ScreenLayoutController.dart';
 
-class NavigationMenu extends StatelessWidget {
-  NavigationMenu();
-  final ScrollController scrollController = ScrollController();
+class NavigationMenu extends GetView<ScreenLayoutController> {
+  ScreenSizeType screenSizeType;
+  NavigationMenu(this.screenSizeType);
+
+  String menuClicked() {
+    return "Clicked";
+  }
 
   Widget menu(String menu, Function onTap) {
     return Container(
         child: InkWell(
+            borderRadius: BorderRadius.circular(15),
+            focusColor: Colors.transparent,
             mouseCursor: MaterialStateMouseCursor.clickable,
             hoverColor: Colors.transparent,
             splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () {},
+            highlightColor: Colors.blue,
+            onTap: () {
+              menuClicked();
+            },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
@@ -26,8 +38,11 @@ class NavigationMenu extends StatelessWidget {
             )));
   }
 
-  @override
-  Widget build(BuildContext context) {
+  Widget _miniLayout() {
+    return Container();
+  }
+
+  Widget _fullLayout() {
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -42,14 +57,35 @@ class NavigationMenu extends StatelessWidget {
           children: [
             Row(
               children: [
-                menu("환자 조회", () {}),
-                menu("병상 조회", () {}),
-                menu("공지사항", () {}),
+                menu("일정 조회", () {
+                  RootPage.to.getMenu("일정 조회");
+                }),
+                menu("환자 조회", () {
+                  RootPage.to.getMenu("환자 조회");
+                }),
+                menu("병상 조회", () {
+                  RootPage.to.getMenu("병상 조회");
+                }),
+                menu("공지사항", () {
+                  RootPage.to.getMenu("공지사항");
+                }),
               ],
             )
           ],
         ),
       ),
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    switch (screenSizeType) {
+      case ScreenSizeType.Mini:
+        return _miniLayout();
+        break;
+      case ScreenSizeType.Full:
+        return _fullLayout();
+        break;
+    }
   }
 }

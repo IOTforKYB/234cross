@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:whereyousick_admin/src/components/pages/footerPage.dart';
 import 'package:whereyousick_admin/src/components/pages/root_page.dart';
-
+import 'package:get/get.dart';
+import 'package:whereyousick_admin/src/controller/ScreenLayoutController.dart';
 import 'components/navigation_menu.dart';
 import 'components/ContentLayoutView.dart';
 
@@ -12,10 +13,26 @@ class mainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      alignment: Alignment.topCenter,
-      child: Column(
-          children: [NavigationMenu(), Expanded(child: RootPage()), footer()]),
+        body: Stack(
+      children: [
+        LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+            ScreenLayoutController.to.builder(constraints);
+            return Container();
+          },
+        ),
+        Obx(() => Container(
+              alignment: Alignment.topCenter,
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minWidth: 600),
+                child: Column(children: [
+                  NavigationMenu(ScreenLayoutController.to.type.value),
+                  Expanded(child: RootPage()),
+                  footer()
+                ]),
+              ),
+            ))
+      ],
     ));
   }
 }

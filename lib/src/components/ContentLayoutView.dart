@@ -11,19 +11,22 @@ class ContentLayoutView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       //padding: const EdgeInsets.all(7),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(
-            child: Container(child: contentWidget),
-          ),
-          SizedBox(width: 20),
-          Expanded(
-              child: Container(
-            child: leftMenu,
-          ))
-        ],
-      ),
+      child: Row(children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Flexible(
+              flex: 1,
+              child: Container(child: contentWidget),
+            ),
+            Flexible(
+                flex: 1,
+                child: Container(
+                  child: leftMenu,
+                ))
+          ],
+        ),
+      ]),
     );
   }
 }
