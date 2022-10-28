@@ -1,8 +1,35 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+String makeRequire() {
+  DateTime now = DateTime.now();
+  String name = "김용범";
+  String bed = "B1";
+  String requiredItem = "진통제";
+  String requiredTime = DateFormat('MM/dd - HH:mm').format(now);
+  String makeRequirement(String patientName, String patientLoc,
+      String patientReq, String reqTime) {
+    return "환자 이름 : " +
+        patientName +
+        ", 병상 위치 : " +
+        patientLoc +
+        ", 요청 사항 : " +
+        patientReq +
+        "\n 요청 시간 : " +
+        reqTime;
+  }
+
+  return makeRequirement(name, bed, requiredItem, requiredTime);
+}
+
+List makeList() {
+  List<String> itemList = [];
+  itemList.add(makeRequire().toString());
+  return itemList;
+}
 
 class RootPage extends StatelessWidget {
-  List<String> requireList = ['A', 'B', 'C', 'D', 'E', 'F'];
   RootPage();
   final ScrollController scrollController = ScrollController();
 
@@ -15,7 +42,7 @@ class RootPage extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              '간호사가 고른 메뉴(나중에 변수로 바꿔서 넣는거 찾아보기)',
+              '간호사가 고른 메뉴(나중에 변수로 바꿔서 넣기)',
               style: TextStyle(
                   fontFamily: 'aggro',
                   fontSize: 40,
@@ -36,11 +63,11 @@ class RootPage extends StatelessWidget {
 
   Widget requirement() {
     return ListView.builder(
-      itemCount: requireList.length,
+      itemCount: makeList().length,
       itemBuilder: (context, index) {
         return Container(
             child: Column(children: [
-          Text(requireList[index],
+          Text(makeList()[index],
               style: TextStyle(fontFamily: "aggro", fontSize: 28),
               textAlign: TextAlign.center),
           Divider(
