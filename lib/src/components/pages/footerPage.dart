@@ -18,7 +18,7 @@ class footer extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             color: Colors.grey.shade300),
         child: Text(
-          "Copyright 2022 김용범 All Rights Reserved.",
+          "Copyright 234Cross All Rights Reserved.",
           style: TextStyle(fontFamily: "aggro", fontSize: 13),
           textAlign: TextAlign.center,
         ));

@@ -17,6 +17,7 @@ class ScreenLayoutController extends GetxController {
   }
 
   void builder(BoxConstraints constraints) {
+    print(constraints.biggest.width);
     if (constraints.biggest.width <= 1500) {
       _screenType(ScreenSizeType.Mini);
     } else if (constraints.biggest.width > 1500) {

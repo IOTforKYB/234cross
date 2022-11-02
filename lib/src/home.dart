@@ -4,7 +4,6 @@ import 'package:whereyousick_admin/src/components/pages/footerPage.dart';
 import 'package:whereyousick_admin/src/components/pages/root_page.dart';
 import 'package:get/get.dart';
 import 'package:whereyousick_admin/src/controller/ScreenLayoutController.dart';
-import 'components/navigation_menu.dart';
 import 'components/ContentLayoutView.dart';
 
 class mainPage extends StatelessWidget {
@@ -26,8 +25,8 @@ class mainPage extends StatelessWidget {
               child: ConstrainedBox(
                 constraints: BoxConstraints(minWidth: 600),
                 child: Column(children: [
-                  NavigationMenu(ScreenLayoutController.to.type.value),
-                  Expanded(child: RootPage()),
+                  Expanded(
+                      child: RootPage(ScreenLayoutController.to.type.value)),
                   footer()
                 ]),
               ),

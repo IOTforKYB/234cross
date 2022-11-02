@@ -19,11 +19,7 @@ class ContentLayoutView extends StatelessWidget {
               flex: 1,
               child: Container(child: contentWidget),
             ),
-            Flexible(
-                flex: 1,
-                child: Container(
-                  child: leftMenu,
-                ))
+            Flexible(flex: 1, child: Container(child: leftMenu))
           ],
         ),
       ]),
